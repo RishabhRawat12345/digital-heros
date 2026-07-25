@@ -1,10 +1,3 @@
-/** @type {import('jest').Config} */
-const config = {
-  testEnvironment: 'node',
-  moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/$1',
-  },
-  testMatch: ['**/__tests__/**/*.test.js'],
+module.exports = {
+  testEnvironment: "node",
 };
-
-export default config;

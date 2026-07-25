@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { parseHtmlMetrics } from '@/lib/parser';
+import { parseHtmlMetrics } from '../../../lib/parser.js';
 
 export async function POST(request) {
   try {
@@ -16,7 +16,7 @@ export async function POST(request) {
 
     // Measure response time
     const startTime = Date.now();
-    
+
     // Add timeout using AbortController
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
@@ -43,7 +43,7 @@ export async function POST(request) {
     const contentType = response.headers.get('content-type') || '';
 
     if (!contentType.includes('text/html')) {
-      return NextResponse.json({ 
+      return NextResponse.json({
         error: 'Target URL did not return HTML content.',
         details: { status, contentType, responseTime }
       }, { status: 400 });
